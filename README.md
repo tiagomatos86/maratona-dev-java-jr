@@ -1,18 +1,15 @@
-## Getting Started
+🏃‍♂️ Maratona Dev Java Jr
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este repositório reúne exercícios práticos em Java desenvolvidos como parte de um plano de estudos focado em formação de desenvolvedor backend Java júnior.
 
-## Folder Structure
+O objetivo é consolidar fundamentos, entender decisões de design e construir uma base sólida para uso do JAVA e frameworks como Spring Boot.
 
-The workspace contains two folders by default, where:
+🎯 Objetivos do repositório
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Consolidar fundamentos da linguagem Java
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Praticar Programação Orientada a Objetos (POO) de forma consciente
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Evoluir gradualmente do Java básico para conceitos usados no mercado
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Criar histórico de aprendizado, evolução e disciplina
