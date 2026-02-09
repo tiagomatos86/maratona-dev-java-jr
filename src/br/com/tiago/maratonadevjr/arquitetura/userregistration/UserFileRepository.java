@@ -1,4 +1,4 @@
-package br.com.tiago.maratonadevjr.poo.userregistration;
+package br.com.tiago.maratonadevjr.arquitetura.userregistration;
 
 import java.io.FileWriter;
 import java.io.IOException;

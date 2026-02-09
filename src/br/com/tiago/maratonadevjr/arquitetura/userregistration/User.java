@@ -1,4 +1,4 @@
-package br.com.tiago.maratonadevjr.poo.userregistration;
+package br.com.tiago.maratonadevjr.arquitetura.userregistration;
 
 public class User {
     private int id;
