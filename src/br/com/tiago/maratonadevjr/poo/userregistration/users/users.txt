@@ -4,9 +4,3 @@ User [id=2, name=Dominique Ribeiro, email=domiribeiro29@hotmail.com]
 _________________
 User [id=3, name=Erik Gabriel, email=erikg0406@gmail.com]
 _________________
-User [id=1, name=Tiago Matos, email=tiago_m_lima@hotmail.com]
-_________________
-User [id=2, name=Dominique Ribeiro, email=domiribeiro29@hotmail.com]
-_________________
-User [id=3, name=Erik Gabriel, email=erikg0406@gmail.com]
-_________________

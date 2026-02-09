@@ -1,46 +1,30 @@
 package br.com.tiago.maratonadevjr.poo.userregistration;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class UserRegistration {
-    private List<User> users = new ArrayList<>();
-
-    public void registerUser(int id, String name, String email){
-       for(User user : users) {
-            if(user.getId() == id) {
-                throw new IllegalStateException ("The ID already exists.");
-            }
-       }
-       User newUser = new User(id, name, email);
-       users.add(newUser);
+    private final UserRepository userRepository;
+    
+    public UserRegistration(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public User searchUser(int id){
-        for(User user : users) { 
-            if(user.getId() == id) {
-                 return user;
-            }
-        }
-        throw new NoSuchElementException ("User not found.");
+    public void registerUser(int id, String name, String email){ 
+        if(userRepository.findById(id) != null) throw new IllegalStateException ("The ID already exists.");
+        User newUser = new User(id, name, email);
+        userRepository.save(newUser);
     }
 
-    public List<String> listAllUsers() {
-        List<String> usersData = new ArrayList<>();
-        for (User user : users) {
-            usersData.add(user.toString());
+    public User searchUser(int id) {
+        User user = userRepository.findById(id);
+        if(userRepository.findById( id) == null) {
+            throw new NoSuchElementException ("User not found.");
         }
-        return usersData;
+        return user;
     }
 
-    public void saveUsersFile(String path) throws IOException{
-        try (FileWriter fw = new FileWriter(path, true)) {
-            for (String userData : listAllUsers()) {
-                fw.write(userData + "\n_________________\n");
-            }
-        }
+    public List<User> listAllUsers() {
+        return userRepository.findAll();
     }
 }
