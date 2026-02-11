@@ -1,7 +1,9 @@
 package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class TimesService {
     private final TimesRepository tr;
@@ -11,12 +13,8 @@ public class TimesService {
     }
 
     public void cadastraTime(TimeEntity time) {
-        List<TimeEntity> times = tr.findAllTeams(); 
-        for(TimeEntity timeDaLista : times) {
-            if(time.getNome().equals(timeDaLista.getNome()) && time.getPais().equals(timeDaLista.getPais()) && time.getCampeonatoNacional().equals(timeDaLista.getCampeonatoNacional()) ) {
-                throw new IllegalStateException ("Time já existe");
-            }
-        }
+        Set<TimeEntity> times = new HashSet<>(tr.findAllTeams()); 
+        if(times.contains(time)) throw new IllegalStateException("Time já existe");
         tr.save(time);
     }
 

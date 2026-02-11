@@ -1,5 +1,7 @@
 package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 
+import java.util.Objects;
+
 public class TimeEntity {
      private static int contId = 0;
     private int id;
@@ -47,4 +49,21 @@ public class TimeEntity {
     public String toString() {
         return "Time [ID=" + id + ", nome=" + nome + ", pais=" + pais + ", campeonatoNacional=" + campeonatoNacional + "]";
     }
+
+    @Override
+    public int hashCode() {
+          return Objects.hash(nome, pais, campeonatoNacional); 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof TimeEntity)) return false;
+        TimeEntity that = (TimeEntity) obj;
+        return Objects.equals(nome, that.nome) &&
+            Objects.equals(pais, that.pais) &&
+            Objects.equals(campeonatoNacional, that.campeonatoNacional);
+    }
+
+    
 }
