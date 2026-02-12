@@ -1,26 +1,25 @@
 package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TimesMemoryRepository implements TimesRepository{
-    List<TimeEntity> times = new ArrayList<>();
+    private Map<Integer, TimeEntity> times = new HashMap<>();
 
     @Override
     public void save(TimeEntity time) {
-        times.add(time);
+        times.put(time.getId(), time);
     }
 
     @Override
     public TimeEntity findById(int id) {
-        for(TimeEntity time : times) {
-            if(time.getId() == id) return time;
-        }
-        return null;
+        return times.get(id);
     }
 
     @Override
     public List<TimeEntity> findAllTeams() {
-        return new ArrayList<>(times);
+        return new ArrayList<>(times.values());
     }
 }
