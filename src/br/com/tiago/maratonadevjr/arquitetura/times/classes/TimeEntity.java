@@ -3,56 +3,44 @@ package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 import java.util.Objects;
 
 public class TimeEntity {
-     private static int contId = 0;
+    private static int contId = 0;
     private int id;
-    private String nome;
-    private String pais;
-    private String campeonatoNacional;
+    private TimeIdentity timeIdentity;
 
     public TimeEntity(String nome, String pais, String campeonatoNacional) {
         this.id = ++contId;
-        this.nome = nome;
-        this.pais = pais;
-        this.campeonatoNacional = campeonatoNacional;
+        this.timeIdentity = new TimeIdentity(nome, pais, campeonatoNacional);
     }
 
      public int getId() {
         return id;
     }
 
-
     public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        return timeIdentity.getNome();
     }
 
     public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
+        return timeIdentity.getPais();
     }
 
     public String getCampeonatoNacional() {
-        return campeonatoNacional;
+        return timeIdentity.getCampeonatoNacional();
     }
 
-    public void setCampeonatoNacional(String campeonatoNacional) {
-        this.campeonatoNacional = campeonatoNacional;
+    public void updateTeamInfo(String nome, String pais, String campeonatoNacional) {
+        TimeIdentity newIdentity = new TimeIdentity(nome, pais, campeonatoNacional);
+        this.timeIdentity = newIdentity;
     }
 
     @Override
     public String toString() {
-        return "Time [ID=" + id + ", nome=" + nome + ", pais=" + pais + ", campeonatoNacional=" + campeonatoNacional + "]";
+        return "Time [ID=" + id + ", nome=" + timeIdentity.getNome() + ", pais=" + timeIdentity.getPais() + ", campeonatoNacional=" + timeIdentity.getCampeonatoNacional() + "]";
     }
 
     @Override
     public int hashCode() {
-          return Objects.hash(nome, pais, campeonatoNacional); 
+          return Objects.hash(id); 
     }
 
     @Override
@@ -60,10 +48,6 @@ public class TimeEntity {
         if (this == obj) return true;
         if (!(obj instanceof TimeEntity)) return false;
         TimeEntity that = (TimeEntity) obj;
-        return Objects.equals(nome, that.nome) &&
-            Objects.equals(pais, that.pais) &&
-            Objects.equals(campeonatoNacional, that.campeonatoNacional);
-    }
-
-    
+        return Objects.equals(id, that.id);
+    } 
 }
