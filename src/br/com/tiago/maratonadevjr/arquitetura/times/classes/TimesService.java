@@ -1,9 +1,8 @@
 package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.UUID;
 
 public class TimesService {
     private final TimesRepository tr;
@@ -13,14 +12,21 @@ public class TimesService {
     }
 
     public void cadastraTime(TimeEntity time) {
-        Set<TimeEntity> times = new HashSet<>(tr.findAllTeams()); 
-        if(times.contains(time)) throw new IllegalStateException("Time já existe");
+        if (verificaIdentidade(time)) {
+            throw new IllegalStateException("Time com essa identidade já existe");
+        }
         tr.save(time);
     }
 
-    public TimeEntity buscarTimePorId(int id) {
+    private boolean verificaIdentidade(TimeEntity time) {
+        return tr.findAllTeams().stream()
+                .anyMatch(timeExistente -> timeExistente.getIdentity().equals(time.getIdentity()));
+    }
+
+    public TimeEntity buscarTimePorId(UUID id) {
         TimeEntity time = tr.findById(id);
-        if(time == null) throw new NoSuchElementException ("Time não encontrado.");
+        if (time == null)
+            throw new NoSuchElementException("Time não encontrado.");
         return time;
     }
 

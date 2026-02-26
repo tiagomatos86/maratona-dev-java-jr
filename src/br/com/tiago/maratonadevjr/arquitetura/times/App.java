@@ -21,12 +21,12 @@ public class App {
         ts.cadastraTime(time4);
         // ts.cadastraTime(time5);
 
-        System.out.println(ts.buscarTimePorId(1));
-        System.out.println(ts.buscarTimePorId(2));
-        System.out.println(ts.buscarTimePorId(3));
-        System.out.println(ts.buscarTimePorId(4));
-        // System.out.println(ts.buscarTimePorId(5));
+        System.out.println(ts.buscarTimePorId(time1.getId()));
+        System.out.println(ts.buscarTimePorId(time2.getId()));
+        System.out.println(ts.buscarTimePorId(time3.getId()));
+        System.out.println(ts.buscarTimePorId(time4.getId()));
+        // System.out.println(ts.buscarTimePorId(time5.getId()));
 
-        System.out.println(ts.retornaTodosTimes());
+        System.out.println("\n------------------------TODOS TIMES-----------------------\n" + ts.retornaTodosTimes());
     }
 }

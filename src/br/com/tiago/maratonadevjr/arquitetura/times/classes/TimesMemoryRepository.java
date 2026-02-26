@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class TimesMemoryRepository implements TimesRepository{
-    private Map<Integer, TimeEntity> times = new HashMap<>();
+    private Map<UUID, TimeEntity> times = new HashMap<>();
 
     @Override
     public void save(TimeEntity time) {
@@ -14,7 +15,7 @@ public class TimesMemoryRepository implements TimesRepository{
     }
 
     @Override
-    public TimeEntity findById(int id) {
+    public TimeEntity findById(UUID id) {
         return times.get(id);
     }
 

@@ -1,18 +1,17 @@
 package br.com.tiago.maratonadevjr.arquitetura.times.classes;
 
-import java.util.Objects;
+import java.util.UUID;
 
 public class TimeEntity {
-    private static int contId = 0;
-    private int id;
+    private final UUID id;
     private TimeIdentity timeIdentity;
 
     public TimeEntity(String nome, String pais, String campeonatoNacional) {
-        this.id = ++contId;
+        this.id = UUID.randomUUID();
         this.timeIdentity = new TimeIdentity(nome, pais, campeonatoNacional);
     }
 
-     public int getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -28,6 +27,10 @@ public class TimeEntity {
         return timeIdentity.getCampeonatoNacional();
     }
 
+    public TimeIdentity getIdentity() {
+        return timeIdentity;
+    }
+
     public void updateTeamInfo(String nome, String pais, String campeonatoNacional) {
         TimeIdentity newIdentity = new TimeIdentity(nome, pais, campeonatoNacional);
         this.timeIdentity = newIdentity;
@@ -35,19 +38,22 @@ public class TimeEntity {
 
     @Override
     public String toString() {
-        return "Time [ID=" + id + ", nome=" + timeIdentity.getNome() + ", pais=" + timeIdentity.getPais() + ", campeonatoNacional=" + timeIdentity.getCampeonatoNacional() + "]";
+        return "Time [ID=" + id + ", nome=" + timeIdentity.getNome() + ", pais=" + timeIdentity.getPais()
+                + ", campeonatoNacional=" + timeIdentity.getCampeonatoNacional() + "]";
     }
 
     @Override
     public int hashCode() {
-          return Objects.hash(id); 
+        return id.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof TimeEntity)) return false;
+        if (this == obj)
+            return true;
+        if (!(obj instanceof TimeEntity))
+            return false;
         TimeEntity that = (TimeEntity) obj;
-        return Objects.equals(id, that.id);
-    } 
+        return id.equals(that.id);
+    }
 }
