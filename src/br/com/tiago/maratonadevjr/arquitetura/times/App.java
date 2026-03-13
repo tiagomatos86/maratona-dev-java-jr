@@ -28,5 +28,13 @@ public class App {
         // System.out.println(ts.buscarTimePorId(time5.getId()));
 
         System.out.println("\n------------------------TODOS TIMES-----------------------\n" + ts.retornaTodosTimes());
+
+        System.out.println();
+
+        System.out.println("\n------------------------TIMES DO PAÍS-----------------------\n" + ts.buscarTimesPorPais("Brasil"));
+        System.out.println("\n------------------------TIMES DO PAÍS-----------------------\n" + ts.buscarTimesPorPais("espanha"));
+        System.out.println("\n------------------------TIMES DO PAÍS-----------------------\n" + ts.buscarTimesPorPais("inglaTERRA "));
+        System.out.println("\n------------------------TIMES DO PAÍS-----------------------\n" + ts.buscarTimesPorPais("Colômbia"));
+        // System.out.println("\n------------------------TIMES DO PAÍS-----------------------\n" + ts.buscarTimesPorPais(""));
     }
 }

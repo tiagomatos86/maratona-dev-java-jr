@@ -7,4 +7,5 @@ public interface TimesRepository {
     public void save(TimeEntity time);
     public TimeEntity findById(UUID id);
     public List<TimeEntity> findAllTeams();
+    public List<TimeEntity> findByCountry(String pais);
 }

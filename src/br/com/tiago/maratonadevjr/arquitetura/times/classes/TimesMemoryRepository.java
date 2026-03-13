@@ -23,4 +23,15 @@ public class TimesMemoryRepository implements TimesRepository{
     public List<TimeEntity> findAllTeams() {
         return new ArrayList<>(times.values());
     }
+
+    @Override
+    public List<TimeEntity> findByCountry(String pais) {
+        List<TimeEntity> timesDoPais = new ArrayList<>();
+        for(TimeEntity time : times.values()) {
+            if(time.getPais().equalsIgnoreCase(pais)) {
+                timesDoPais.add(time);
+            }
+        }
+        return timesDoPais;
+    }
 }

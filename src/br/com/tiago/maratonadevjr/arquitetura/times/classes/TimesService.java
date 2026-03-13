@@ -30,6 +30,21 @@ public class TimesService {
         return time;
     }
 
+    public List<TimeEntity> buscarTimesPorPais(String pais) {
+        if(pais == null || pais.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+
+        List<TimeEntity> timesDoPais = tr.findByCountry(pais.trim()); 
+
+        if(timesDoPais.isEmpty()){
+            throw new NoSuchElementException("Nenhum time cadastrado para o pais: " + pais);
+        }
+
+         return timesDoPais;
+    }
+
+
     public List<TimeEntity> retornaTodosTimes() {
         return tr.findAllTeams();
     }
